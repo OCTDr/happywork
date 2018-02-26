@@ -1,0 +1,127 @@
+.container-hang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+}
+
+.cellDate {
+  background-color: #000;
+  color: white;
+  font-size: 33rpx;
+  margin-right: 1px;
+  text-align: center;
+}
+
+.contentDate {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin: 1rpx;
+}
+
+.type_no_1_pad {
+  display: flex;
+  flex-direction: column;
+  padding-top: 17rpx;
+  background-color: #eee;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.type_no_1 {
+  /*type=-1,表示非本月日期*/
+  font-size: 33rpx;
+  color: #c9c9c9;
+}
+
+.type_1_pad {
+  display: flex;
+  flex-direction: column;
+  padding-top: 17rpx;
+  background-color: #fff;
+  border: 2px solid #bdbdbd;
+  border-radius: 50%;
+  align-items: center;
+  width: 95%;
+  height: 100%;
+}
+
+.type_1 {
+  /*type=1, 表示今天日期*/
+  font-size: 33rpx;
+  color: #000;
+}
+
+.type_2_pad {
+  display: flex;
+  flex-direction: column;
+  padding-top: 17rpx;
+  background-color: #fff;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.type_select {
+  background-color: cornflowerblue;
+  border-radius: 50%; 
+}
+
+.type_2 {
+  /*type=2, 表示本月非今天日期*/
+  font-size: 33rpx;
+  color: #000;
+}
+
+.type_3 {
+  /*type=3, 表示选中日期*/
+  font-size: 33rpx;
+  color: aqua;
+}
+
+.type_4 {
+  /*type=4, 表示限行日期*/
+  font-size: 33rpx;
+  color: coral;
+}
+
+.type_Am_Pm {
+  /*type=-1,表示非本月日期*/
+  font-size: 25rpx;
+  color: #c9c9c9;
+}
+
+.cell-box {
+  display: flex;
+  flex-direction: row;
+  background-color: #bdbdbd;
+}
+
+.swipter-box {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+.button-cmt{ 
+  display: flex;
+  flex-direction: column;
+  padding-top: 17rpx;
+  background-color:#fff;
+  text-align: center; 
+  align-items:center;
+  padding-bottom: 17rpx;
+}
+.picker
+{
+  margin-bottom: 21rpx;
+  
+
+}
+.driver-name {
+  color: red;
+  font-size:15px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}

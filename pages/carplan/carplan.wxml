@@ -1,0 +1,89 @@
+<view class="container" style="background:#fff">
+  <view class="container-hang" style="margin-top:23rpx;width:auto">
+    <text wx:for="{{dateTitles}}" wx:for-item="dateItem" wx:key="{{index}}" class="cellDate" style="width:{{titleCellWidth}}px;padding:6rpx 0 6rpx 0">{{dateItem}}</text>
+  </view>
+
+  <swiper bindchange="swiperChange"  class="swipter-box" duration="300" style="height:{{swiperHeight}}rpx">
+    <swiper-item wx:for="{{monthDatas}}" wx:for-item="monthData" wx:for-index="n" wx:key="{{index}}">
+
+      <view class="cell-box" wx:for="{{monthData.dataHarr}}" wx:for-index="i" wx:key="{{index}}">
+        <view wx:for="{{[0, 1, 2, 3, 4, 5, 6]}}" wx:for-index="j" wx:key="{{index}}">
+          <view class="contentDate" style="width:{{titleCellWidth}}px;height:{{dateCellHeight}}rpx">
+            <view class="{{monthData.data[i*7 + j].selected?'type_no_1_pad type_select':'type_no_1_pad'}}" data-indexmonth="{{n}}" data-indexday="{{i*7 + j}}" wx:if="{{monthData.data[i*7 + j].type == -1}}" bindtap='bindIndexDaySelected'>
+              <text class="type_no_1" wx:if="{{j!=nocar}}">{{monthData.data[i*7 + j].dateShow}}</text>
+              <text class="type_4" wx:if="{{j==nocar}}">{{monthData.data[i*7 + j].dateShow}}</text>
+              <image src="{{msg_car_icon}}" wx:if="{{monthData.data[i*7 + j].iscar}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_aps_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='AP'}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_ams_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='Am'}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_pms_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='Pm'}}" style="width:30rpx;height:30rpx" />
+            </view>
+            <view class="{{monthData.data[i*7 + j].selected?'type_1_pad type_select':'type_1_pad'}}" data-indexmonth="{{n}}" data-indexday="{{i*7 + j}}" wx:if="{{monthData.data[i*7 + j].type == 1}}" bindtap='bindIndexDaySelected'>
+              <text class="type_1" wx:if="{{j!=nocar}}">{{monthData.data[i*7 + j].dateShow}}</text>
+              <text class="type_4" wx:if="{{j==nocar}}">{{monthData.data[i*7 + j].dateShow}}</text>
+              <image src="{{msg_car_icon}}" wx:if="{{monthData.data[i*7 + j].iscar}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_aps_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='AP'}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_ams_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='Am'}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_pms_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='Pm'}}" style="width:30rpx;height:30rpx" />
+
+            </view>
+            <view class="{{monthData.data[i*7 + j].selected?'type_2_pad type_select':'type_2_pad'}}" data-indexmonth="{{n}}" data-indexday="{{i*7 + j}}" wx:if="{{monthData.data[i*7 + j].type == 2}}" bindtap='bindIndexDaySelected'>
+              <text class="type_2" wx:if="{{j!=nocar}}">{{monthData.data[i*7 + j].dateShow}}</text>
+              <text class="type_4" wx:if="{{j==nocar}}">{{monthData.data[i*7 + j].dateShow}}</text>
+              <image src="{{msg_car_icon}}" wx:if="{{monthData.data[i*7 + j].iscar}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_aps_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='AP'}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_ams_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='Am'}}" style="width:30rpx;height:30rpx" />
+              <image src="{{msg_pms_icon}}" wx:if="{{monthData.data[i*7 + j].iscar && monthData.data[i*7 + j].ampm=='Pm'}}" style="width:30rpx;height:30rpx" />
+
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+    </swiper-item>
+  </swiper>
+
+  <text style="width:{{windowWidth}}px;height:2rpx;background-color:#bdbdbd" />
+
+  <view style="display:flex;flex-direction:column;background:#fff;margin-top:53rpx;align-items:center">
+    <!--image src="{{isdrive?bycar_icon:nocar_icon}}" style="width:105rpx;height:105rpx" bindtap='bindChangeDrive' /-->
+    <text style="color:#d9d9d9;font-size:33rpx;margin-top:21rpx">{{msg_car_info}}</text>
+    <view style='display:flex;flex-direction:column:row;margin-top:40rpx;align-items:center'>
+      <image src="{{AP.isap?msg_aps_icon:msg_ap_icon}}" data-index="AP" style="width:55rpx;height:55rpx;margin-right:70rpxmargin-left:70rpx" bindtap='bindApChange' />
+      <image src="{{AP.isam?msg_ams_icon:msg_am_icon}}" data-index="Am" style="width:55rpx;height:55rpx;margin-left:70rpx" bindtap='bindApChange' />
+      <image src="{{AP.ispm?msg_pms_icon:msg_pm_icon}}" data-index="Pm" style="width:55rpx;height:55rpx;margin-left:70rpx" bindtap='bindApChange' />
+      <image src="{{msg_nocar_icon}}" data-index="NoCar" style="width:55rpx;height:55rpx;margin-left:70rpx" bindtap='bindApChange' />
+    </view>
+    <picker style="{{AP.isap || AP.isam || AP.ispm  ?'':'display:none'}}" mode='selector' range='{{arry}}' index='{{index}}' bindchange='bindIndexChange'>
+      <view class='picker'>
+        空位个数:{{arry[index]}}
+      </view>
+    </picker>
+    <picker style="{{AP.isap || AP.isam ?'':'display:none'}}" mode="time" value="{{amtime}}" start="07:01" end="12:00" bindchange="bindAmTimeChange">
+      <view class="picker">
+        发车时间上午: {{amtime}}
+      </view>
+    </picker>
+    <picker style="{{AP.isap || AP.ispm ?'':'display:none'}}" mode="time" value="{{pmtime}}" start="12:00" end="21:01" bindchange="bindPmTimeChange">
+      <view class="picker">
+        发车时间傍晚: {{pmtime}}
+      </view>
+    </picker>
+
+    <view style="{{AP.isap || AP.isam || AP.ispm ?'display:flex;flex-direction:column:row;align-items:center':'display:none'}}">
+      <input maxlength='8' class='input' value="{{remarkinput}}" placeholder='如要备注在此输入' bindinput='bindRemarkInput' />
+      <!--image src="{{msg_cmt_icon}}" style="width:40rpx;height:40rpx; margin-top: 20rpx;margin-left:20rpx" bindtap='bindCmtclick' /-->
+    </view>
+
+    <form bindsubmit='bindCmtclick' wx:if="{{AP.isap || AP.isam || AP.ispm}}" report-submit='true'>
+      <button form-type='submit' type='primary' size='mini'>提交</button>
+    </form>
+
+  </view>
+
+</view>
+<view class='button-cmt'>
+  <view style=" background:#000;width:{{windowWidth/3}}px;height:80%">
+    <text style='color:white' bindtap='bindviewonecar'>查看同乘</text>
+  </view>
+</view>

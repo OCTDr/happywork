@@ -1,0 +1,24 @@
+/* pages/books/bookinfo.wxss */
+/* pages/driverlst/driverlst.wxss */
+.onecaruser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-style: solid;
+  border-bottom-color: #aaa;
+  border-bottom-width: 1rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  height: 158rpx;
+}
+
+.nametext {
+  color: cornflowerblue;
+  font-size: 40rpx;
+}
+.nametext_read {
+  color:chocolate;
+  font-size: 30rpx;
+  margin-right: 10rpx;
+}

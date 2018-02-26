@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="thiscontainer">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text>{{regist}}</text>
+  </view>
+
+
+</view>
+<swiper bindchange="swiperChange" indicator-dots="true" current="{{cunrentindex}}" duration="300" style="height:{{swiperHeight}}rpx">
+  <swiper-item wx:for="{{byonecars}}" wx:for-item="byonecar" wx:for-index="n" wx:key="{{index}}">
+    <view style='display:flex;flex-direction:row;align-items: center;justify-content: center'>
+      <text class='usermotto' wx:if="{{byonecar.msg!='null'}}">{{byonecar.msg}}</text>
+    </view>
+    <view class="onecaruser" wx:for="{{byonecar.users}}" wx:for-item="user" wx:key="{{index}}">
+      <view style='display:flex;flex-direction:row;align-items: center;'>
+        <image src="{{user.imageurl}}" style='height:105rpx;width:105rpx; margin-right: 20rpx;'> </image>
+        <text class="nametext" wx:if="{{user.ampm!=''}}">【{{user.ampm}}】</text>
+        <text class="nametext">{{user.nickname}} </text>
+      </view>
+      <view style='display:flex;flex-direction:row;align-items: center;'>
+        <text class="nametext_read" >{{user.isable?user.isread?'已读':'未读':user.isdriver?'已取消':'无效'}}</text>
+        <image src="{{msg_car_icon}}" style='height:45rpx;width:45rpx' wx:if="{{user.isdriver}}"></image>
+        <image src="{{msg_user_icon}}" style='height:45rpx;width:45rpx' wx:if="{{!user.isdriver}}"></image>
+      </view>
+    </view>
+
+  </swiper-item>
+</swiper>

@@ -1,0 +1,17 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+.regist
+{
+  margin-top: 50rpx;
+}
+.input {
+  color: chocolate;
+  text-align: center;
+  width: 350rpx;
+}

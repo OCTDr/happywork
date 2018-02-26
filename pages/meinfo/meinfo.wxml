@@ -1,0 +1,21 @@
+<view bindtap="bindViewTap" class="userinfo">
+  <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <text>{{regist}}</text>
+
+</view>
+<view class='maincontainer'>
+  <view class='rowcontainer'>
+    <text class='left'>是否开车</text>
+    <switch checked="{{isDrive}}" class='right' bindchange='bindswitchchange'>  </switch>
+  </view>
+  <view class='rowcontainer'>
+    <text class='left'>限行</text>
+    <picker class="right" style='margin-right:20rpx;' mode="{{selectmode}}"range='{{WeekTitles}}' index='{{WeekIndex}}' bindchange='bindIndexChange'>
+      <view class='picker'>
+        {{WeekTitles[WeekIndex]}}
+      </view>
+    </picker>
+  </view>
+
+</view>

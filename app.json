@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/regist/regist",
+    "pages/bookinfo/bookinfo",
+    "pages/carplan/carplan",
+    "pages/carbook/carbook",
+    "pages/meinfo/meinfo",
+    "pages/help/help"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "快乐上下班",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/home.png",
+        "iconPath": "images/home.png",
+        "pagePath": "pages/index/index",
+        "text": ""
+      },
+      {
+        "selectedIconPath": "images/car.png",
+        "iconPath": "images/car.png",
+        "pagePath": "pages/carplan/carplan",
+        "text": ""
+      },
+      {
+        "selectedIconPath": "images/bookinf.png",
+        "iconPath": "images/bookinf.png",
+        "pagePath": "pages/carbook/carbook",
+        "text": ""
+      },
+      {
+        "selectedIconPath": "images/me.png",
+        "iconPath": "images/me.png",
+        "pagePath": "pages/meinfo/meinfo",
+        "text": ""
+      }
+    ]
+  }
+}

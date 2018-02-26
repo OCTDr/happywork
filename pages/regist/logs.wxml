@@ -1,0 +1,11 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <view>
+    <view class="section">
+      <input placeholder='请输入注册口令' bindinput='bindInput' />
+    </view>
+  </view>
+  <view class='regist'> 
+  <text bindtap='bindRegist'>注冊</text>
+  </view>
+</view>

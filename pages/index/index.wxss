@@ -1,0 +1,71 @@
+/**index.wxss**/
+
+.thiscontainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 158rpx;
+  height: 158rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 30%; 
+  color:chocolate;
+}
+.swipter-box {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+.user-drive {
+  color: red;
+    text-decoration:underline;
+}
+
+.selected {
+  color: red;
+  text-decoration:underline;
+}
+
+.onecaruser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-style: solid;
+  border-bottom-color: #aaa;
+  border-bottom-width: 1rpx;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  height: 158rpx;
+}
+
+.nametext {
+  color: cornflowerblue;
+  font-size: 40rpx;
+}
+.nametext_read {
+  color:chocolate;
+  font-size: 30rpx;
+  margin-right: 10rpx;
+ 
+}

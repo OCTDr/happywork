@@ -1,0 +1,13 @@
+ <text wx:if="{{msg!='null'}}">{{msg}}</text>
+<view class="onecaruser" wx:for="{{byonecar}}" wx:for-item="user" wx:key="{{index}}">
+  <view style='display:flex;flex-direction:row;align-items: center;'>
+    <image src="{{user.imageurl}}" style='height:105rpx;width:105rpx; margin-right: 20rpx;'> </image>
+    <text class="nametext">{{user.nickname}} </text>
+    <text class="nametext" wx:if="{{user.ampm!=''}}">【{{user.ampm}}】</text>
+  </view>
+  <view style='display:flex;flex-direction:row;align-items: center;'>
+    <text class="nametext_read" wx:if="{{!user.isdriver}}">{{user.isable?user.isread?'已读':'未读':'无效'}}</text>
+    <image src="{{msg_car_icon}}" style='height:45rpx;width:45rpx' wx:if="{{user.isdriver}}"></image>
+    <image src="{{msg_user_icon}}" style='height:45rpx;width:45rpx' wx:if="{{!user.isdriver}}"></image>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<!--pages/help/help.wxml-->
+<swiper indicator-dots="true" current="0" duration="300" style="height:800rpx">
+  <swiper-item >
+   <view class='msgtitle'>  <text> 获取注册口令</text></view>
+
+    <view class='msgcontex'>1、注册口令可以从您所在组织的管理者或同一组织朋友中获取，一个微信用户只能属于一个组织</view>
+
+    <view class='msgcontex'>2、若要更换组织，请输入另一组织的注册口令，重新注册即可</view>
+    
+    <view class='msgcontex'>3、若您想成为一个新的组织管理者请看下一页帮助</view>
+
+  </swiper-item>
+
+  <swiper-item >
+    <view  class='msgtitle'> <text> 成为组织管理者</text></view>  
+    <view class='msgcontex'>
+    1、将发送您的微信号，组织名称，地址，联系电话，通过电子邮件 发送到 blockgis@foxmail.com 并请注明标题为组织申请
+    </view>
+
+    <view class='msgcontex'>
+    2、系统确认后，将通过电子邮件的方式发送注册口令
+    </view>
+    <view class='msgcontex'>
+    3、收到注册口令后，运行小程序，输入注册口令，验证是否注册成功
+    </view>
+    <view class='msgcontex'>
+    4、将注册口令发送给您的朋友们，邀请他们加入您的组织
+    </view>
+    <view class='msgcontex'>
+     5、注意：组织内的所有成员才可以看到所在组织的所有拼车信息
+    </view>
+  </swiper-item>
+
+
+</swiper>

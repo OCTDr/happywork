@@ -1,0 +1,56 @@
+/* pages/meinfo/meifo.wxss */
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 158rpx;
+  height: 158rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 20%;
+}
+.user-drive {
+   width: 500rpx;
+  margin-right: 50rpx; 
+   color:red;
+}
+.maincontainer{
+   display: flex;
+  flex-direction: column;
+  }
+.rowcontainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+  border-bottom-style: solid;
+  border-bottom-color: #aaa;
+  border-bottom-width: 1rpx;
+  height: 100rpx;
+ 
+}
+.rowcontainer .wx-switch-input{width:42px;height:22px;}
+.rowcontainer .wx-switch-input::before{width:41px;height: 20px;}
+.rowcontainer .wx-switch-input::after{width: 20px;height: 20px;}
+
+.left{
+  font-family: "黑体";
+  color: black;
+  font-size:40rpx;
+}
+.right{
+  font-family: "黑体";
+  color: #888;
+  font-size: 40rpx;  
+}

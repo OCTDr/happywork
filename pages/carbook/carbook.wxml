@@ -1,0 +1,143 @@
+<view class="container" style="background:#fff">
+  <view class="container-hang" style="margin-top:23rpx;width:auto">
+    <text wx:for="{{dateTitles}}" wx:for-item="dateItem" wx:key="{{index}}" class="cellDate" style="width:{{titleCellWidth}}px;padding:6rpx 0 6rpx 0">{{dateItem}}</text>
+  </view>
+
+  <swiper bindchange="swiperChange"  class="swipter-box" duration="300" style="height:{{swiperHeight}}rpx">
+    <swiper-item wx:for="{{monthDatas}}" wx:for-item="monthData" wx:for-index="n" wx:key="{{index}}">
+
+      <view class="cell-box" wx:for="{{monthData.dataHarr}}" wx:for-index="i" wx:key="{{index}}">
+        <view wx:for="{{[0, 1, 2, 3, 4, 5, 6]}}" wx:for-index="j" wx:key="{{index}}">
+          <view class="contentDate" style="width:{{titleCellWidth}}px;height:{{dateCellHeight}}rpx">
+            <view class="{{monthData.data[i*7 + j].selected?'type_no_1_pad type_select':'type_no_1_pad'}}" data-indexmonth="{{n}}" data-indexday="{{i*7 + j}}" wx:if="{{monthData.data[i*7 + j].type == -1}}" bindtap='bindIndexDaySelected'>
+              <text class="type_no_1">{{monthData.data[i*7 + j].dateShow}}</text>
+              <image src="{{car_icon}}" wx:if="{{monthData.data[i*7 + j].iscar}}" style="width:30rpx;height:30rpx" />
+              <image src="{{isme_icon}}" wx:if="{{monthData.data[i*7 + j].isdriver}}" style="width:30rpx;height:30rpx" />
+              <image src="{{booked_icon}}" wx:if="{{monthData.data[i*7 + j].isbook}}" style="width:30rpx;height:30rpx" />
+
+            </view>
+            <view class="{{monthData.data[i*7 + j].selected?'type_1_pad type_select':'type_1_pad'}}" data-indexmonth="{{n}}" data-indexday="{{i*7 + j}}" wx:if="{{monthData.data[i*7 + j].type == 1}}" bindtap='bindIndexDaySelected'>
+              <text class="type_1">{{monthData.data[i*7 + j].dateShow}}</text>
+              <image src="{{car_icon}}" wx:if="{{monthData.data[i*7 + j].iscar}}" style="width:30rpx;height:30rpx" />
+              <image src="{{isme_icon}}" wx:if="{{monthData.data[i*7 + j].isdriver}}" style="width:30rpx;height:30rpx" />
+              <image src="{{booked_icon}}" wx:if="{{monthData.data[i*7 + j].isbook}}" style="width:30rpx;height:30rpx" />
+
+            </view>
+            <view class="{{monthData.data[i*7 + j].selected?'type_2_pad type_select':'type_2_pad'}}" data-indexmonth="{{n}}" data-indexday="{{i*7 + j}}" wx:if="{{monthData.data[i*7 + j].type == 2}}" bindtap='bindIndexDaySelected'>
+              <text class="type_2">{{monthData.data[i*7 + j].dateShow}}</text>
+              <image src="{{car_icon}}" wx:if="{{monthData.data[i*7 + j].iscar}}" style="width:30rpx;height:30rpx" />
+              <image src="{{isme_icon}}" wx:if="{{monthData.data[i*7 + j].isdriver}}" style="width:30rpx;height:30rpx" />
+              <image src="{{booked_icon}}" wx:if="{{monthData.data[i*7 + j].isbook}}" style="width:30rpx;height:30rpx" />
+
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+    </swiper-item>
+  </swiper>
+
+  <text style="width:{{windowWidth}}px;height:2rpx;background-color:#bdbdbd" />
+
+  <view style=' display:flex;flex-direction:column:row;align-items:center '>
+    <text wx:if="{{!currentday.iscar}}" style="color:#d9d9d9;font-size:33rpx;margin-top:21rpx">今日无人提供车辆</text>
+    <text wx:if="{{currentday.isdriver}}" style="color:#d9d9d9;font-size:33rpx;margin-top:21rpx">今日你开车无须预约车辆</text>
+  </view>
+
+  <view wx:if="{{currentday.iscar && !currentday.isdriver}}" style="display:flex;flex-direction:column;background:#fff;margin-top:53rpx;align-items:center">
+
+    <view wx:if="{{currentday.driversAP.length>0}}" style='display:flex;flex-direction:row;align-items:center'>
+      <image src="{{msg_ap_icon}}" style="width:80rpx;height:80rpx;" />
+      <text style='margin-left:10rpx;'>共{{currentday.driversAP.length}}辆</text>
+    </view>
+    <view wx:for="{{currentday.driversAP}}"  wx:for-item="driver" wx:for-index="n" wx:key="{{index}}">
+      <text class='driver-name'>{{driver.name}} </text>
+      <text class='driver-name' wx:if="{{driver.remark!=''}}">【{{driver.remark}}】</text>
+      <view style='display:flex;flex-direction:row;;align-items:center'>
+        <image src="{{driver.img}}" style="width:115rpx;height:115rpx;margin-left:53rpx;margin-right:15rpx" />
+        <view style='display:flex;flex-direction:column;align-items:center'>
+          <view style='display:flex;flex-direction:row;align-items:center'>
+            <text>空位:{{driver.amseatnum}}个</text>
+            <text>Am: {{driver.timeam}}</text>
+            <!--image data-type="AP.Am" data-pindex="{{n}}" src="{{driver.ambooked?booked_icon:bookcar_icon}}" style="width:55rpx;height:55rpx;margin-left:53rpx" bindtap='bindChangeBookcar' /-->
+            <form data-ptype="AP.Am" data-pindex="{{n}}" bindsubmit='bindChangeBookcar' report-submit='true'>
+              <button form-type='submit' type="{{driver.ambooked?'primary':'warn'}}" size='mini'>{{driver.ambooked?'已预':'未预'}}</button>
+            </form>
+            <!--image data-type="AP.Am" data-pindex="{{n}}" src="{{driver.ambooked?booked_icon:bookcar_icon}}" style="width:55rpx;height:55rpx;margin-left:53rpx" bindtap='bindChangeBookcar' /-->
+
+          </view>
+          <view style='display:flex;flex-direction:row;align-items:center'>
+            <text>空位:{{driver.pmseatnum}}个</text>
+            <text>Pm: {{driver.timepm}}</text>
+            <!--image data-type="AP.Pm" data-pindex="{{n}}" src="{{driver.pmbooked?booked_icon:bookcar_icon}}" style="width:55rpx;height:55rpx;margin-left:53rpx" bindtap='bindChangeBookcar' /-->
+            <form data-ptype="AP.Pm" data-pindex="{{n}}" bindsubmit='bindChangeBookcar' report-submit='true'>
+              <button form-type='submit' type="{{driver.pmbooked?'primary':'warn'}}" size='mini'>{{driver.pmbooked?'已预':'未预'}}</button>
+            </form>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view wx:if="{{currentday.driversAm.length>0}}" style=' display:flex;flex-direction:column:row;align-items:center '>
+      <image src="{{msg_am_icon}}" style="width:80rpx;height:80rpx;" />
+      <text style='margin-left:10rpx; '>共{{currentday.driversAm.length}}辆</text>
+    </view>
+    <view wx:for="{{currentday.driversAm}}" wx:for-item="driver" wx:for-index="n" wx:key="{{index}}">
+      <text class='driver-name'>{{driver.name}}</text>
+      <text class='driver-name' wx:if="{{driver.remark!=''}}">【{{driver.remark}}】</text>
+      <view style='display:flex;flex-direction:row;;align-items:center'>
+        <image src="{{driver.img}}" style="width:105rpx;height:105rpx;margin-left:53rpx;margin-right:15rpx" />
+        <view style='display:flex;flex-direction:column;align-items:center'>
+          <view style='display:flex;flex-direction:row;align-items:center'>
+            <text>空位:{{driver.amseatnum}}个</text>
+            <text>Am: {{driver.timeam}}</text>
+            <!--image data-type="Am" data-pindex="{{n}}" src="{{driver.ambooked?booked_icon:bookcar_icon}}" style="width:55rpx;height:55rpx;margin-left:53rpx" bindtap='bindChangeBookcar' /-->
+            <form data-ptype="Am" data-pindex="{{n}}" bindsubmit='bindChangeBookcar' report-submit='true'>
+              <button form-type='submit' type="{{driver.ambooked?'primary':'warn'}}" size='mini'>{{driver.ambooked?'已预':'未预'}}</button>
+            </form>
+
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+
+    <view wx:if="{{currentday.driversPm.length>0 }}" style='display:flex;flex-direction:column:row;align-items:center '>
+      <image src="{{msg_pm_icon}}" style="width:80rpx;height:80rpx;" />
+      <text style='margin-left:10rpx; '>共{{currentday.driversPm.length}}辆</text>
+    </view>
+    <view wx:for="{{currentday.driversPm}}" wx:for-item="driver" wx:for-index="n" wx:key="{{index}}">
+      <text class='driver-name'>{{driver.name}} </text>
+      <text class='driver-name' wx:if="{{driver.remark!=''}}">【{{driver.remark}}】</text>
+      <view style='display:flex;flex-direction:row;;align-items:center'>
+        <image src="{{driver.img}}" style="width:105rpx;height:105rpx;margin-left:53rpx;margin-right:15rpx" />
+        <view style='display:flex;flex-direction:column;align-items:center'>
+          <view style='display:flex;flex-direction:row;align-items:center'>
+            <text>空位:{{driver.pmseatnum}}个</text>
+            <text>Pm: {{driver.timepm}}</text>
+            <!--image data-type="Pm" data-pindex="{{n}}" src="{{driver.pmbooked?booked_icon:bookcar_icon}}" style="width:55rpx;height:55rpx;margin-left:53rpx" bindtap='bindChangeBookcar' /-->
+            <form data-ptype="Pm" data-pindex="{{n}}" bindsubmit='bindChangeBookcar' report-submit='true'>
+              <button form-type='submit' type="{{driver.pmbooked?'primary':'warn'}}" size='mini'>{{driver.pmbooked?'已预':'未预'}}</button>
+            </form>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+  </view>
+  <!--form bindsubmit='bindsubmit' report-submit='true'>
+    <button form-type='submit' type="{{submitmsg.ptype}}" size='mini'>{{submitmsg.text}}</button>
+  </form-->
+</view>
+<view class='button-cmt '>
+  <view style=" background:#000;width:{{windowWidth/3}}px;height:80%">
+    <text style='color:white ' bindtap='bindviewonecar'>查看同乘</text>
+
+  </view>
+</view>
